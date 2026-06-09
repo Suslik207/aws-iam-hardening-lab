@@ -157,3 +157,24 @@ The `/screenshots` directory contains evidence of:
 # Disclaimer
 
 This project was created in a personal AWS Free Tier lab environment for educational and portfolio purposes only.
+
+```mermaid
+flowchart TD
+
+A[Intern User - Low Privilege] --> B[S3 Read Access Only]
+B --> C[Access to secret.txt]
+
+C --> D[DangerousPolicyAttach Granted]
+D --> E[Can Attach IAM Policies]
+
+E --> F[Attach AdministratorAccess to self]
+F --> G[Privilege Escalation]
+
+G --> H[Full AWS Account Access]
+
+H --> I[CloudTrail Logs Event]
+I --> J[Detection of AttachUserPolicy]
+
+J --> K[Remediation]
+K --> L[Remove Admin Policy + Fix IAM Permissions]
+```
